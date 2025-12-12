@@ -1,0 +1,22 @@
+POST http://localhost:3300/posts
+Content-Type: application/json
+
+{
+  "title": "My First Post",
+  "content": "This is the content of my first post.",
+  "slug": "my-first-post",
+  "status": "published",
+  "postType": "page",
+  "publicOn": "2024-06-15T10:00:00Z",
+  "tags": [
+    "introduction",
+    "welcome"
+  ],
+  "featureImageUrl": "http://example.com/images/feature-image.jpg",
+  "metaOptions": [
+    {
+      "key": "My First Post - Welcome",
+      "value": true
+    }
+  ]
+}
