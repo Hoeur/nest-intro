@@ -5,6 +5,9 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TagsController } from './tags/tags.controller';
+import { TagsModule } from './tags/tags.module';
+import { MetaOptionsModule } from './meta-options/meta-options.module';
 
 @Module({
   imports: [
@@ -16,17 +19,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       inject: [],
       useFactory: () => ({
         type: 'postgres',
-        database: 'nest_intro',
+        database: 'nest-intro',
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
+        autoLoadEntities: true,
         port: 5432,
         username: 'postgres',
         password: 'root',
         host: 'localhost',
       }),
     }),
+    TagsModule,
+    MetaOptionsModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TagsController],
   providers: [AppService],
 })
 export class AppModule {}
